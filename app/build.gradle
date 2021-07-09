@@ -1,6 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file("../appkey/debug.keystore")
+        }
+
+        release {
+            keyAlias 'adbair'
+            keyPassword 'adbair'
+            storeFile file('../appkey/adbair.keystore')
+            storePassword 'adbair'
+        }
+    }
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.salmangeforce.adboverair"
@@ -8,6 +23,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.release
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
